@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.games.gettoblackjack"
+      package="com.games.pianoApp"
       android:versionCode="1"
       android:versionName="1.0">
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="8"/> 
-    <application android:icon="@drawable/icon" android:label="Getto Black Jack" android:debuggable="true">
-        <activity android:name="com.games.ghettoblackjack.GhettoBlackjack"
-                  android:label="Getto Blackjack"
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="10"/> 
+    <application android:icon="@drawable/icon" android:label="Piano App" android:debuggable="true">
+        <activity android:name="PianoApp"
+                  android:label="Piano App"
                   android:configChanges="keyboard|keyboardHidden|orientation"
                   android:screenOrientation="landscape">
             <intent-filter>

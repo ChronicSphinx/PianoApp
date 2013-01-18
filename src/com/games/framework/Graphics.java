@@ -15,8 +15,15 @@ public interface Graphics {
 
     public void drawRect(int x, int y, int width, int height, int color);
 
+    //x = screen x, y = screen y, srcX = image x, srcY = image y and srcWidth and height = image height and width that you want to display
     public void drawPixmap(Pixmap pixmap, int x, int y, int srcX, int srcY,
             int srcWidth, int srcHeight);
+    
+    public void drawPixmap(Pixmap pixmap, int x, int y, int width, int height,int srcX, int srcY,
+            int srcWidth, int srcHeight);
+    
+    public void drawPixmap(Pixmap pixmap, int x, int y, int width, int height,int srcX, int srcY,
+        int srcWidth, int srcHeight, float degrees);
 
     public void drawPixmap(Pixmap pixmap, int x, int y);
 

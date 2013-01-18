@@ -117,6 +117,52 @@ public class AndroidGraphics implements Graphics {
     }
     
     @Override
+    public void drawPixmap(Pixmap pixmap, int x, int y, int width, int height,int srcX, int srcY,
+            int srcWidth, int srcHeight) {
+        srcRect.left = srcX;
+        srcRect.top = srcY;
+        srcRect.right = srcX + srcWidth - 1;
+        srcRect.bottom = srcY + srcHeight - 1;
+
+        dstRect.left = x;
+        dstRect.top = y;
+        dstRect.right = x + width - 1;
+        dstRect.bottom = y + height - 1;
+
+        canvas.drawBitmap(((AndroidPixmap) pixmap).bitmap, srcRect, dstRect,
+                null);
+    }
+    
+    @Override
+    public void drawPixmap(Pixmap pixmap, int x, int y, int width, int height,int srcX, int srcY,
+            int srcWidth, int srcHeight, float degrees) {
+        srcRect.left = srcX;
+        srcRect.top = srcY;
+        srcRect.right = srcX + srcWidth - 1;
+        srcRect.bottom = srcY + srcHeight - 1;
+
+        dstRect.left = x;
+        dstRect.top = y;
+        dstRect.right = x + width - 1;
+        dstRect.bottom = y + height - 1;
+        
+        if(degrees > 0)
+        {
+        	canvas.save();
+        	canvas.rotate(degrees);
+        	canvas.drawBitmap(((AndroidPixmap) pixmap).bitmap, srcRect, dstRect,
+              null);
+//        	canvas.rotate(-degrees);
+        	canvas.restore();
+        }
+        else
+        {
+        	canvas.drawBitmap(((AndroidPixmap) pixmap).bitmap, srcRect, dstRect,
+                null);
+        }
+    }
+    
+    @Override
     public void drawPixmap(Pixmap pixmap, int x, int y) {
         canvas.drawBitmap(((AndroidPixmap)pixmap).bitmap, x, y, null);
     }
