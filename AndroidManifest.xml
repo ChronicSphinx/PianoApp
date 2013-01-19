@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="10"/> 
-    <application android:icon="@drawable/icon" android:label="Piano App" android:debuggable="true">
+    <application android:icon="@drawable/ic_launcher" android:label="Piano App" android:debuggable="false">
         <activity android:name="PianoApp"
                   android:label="Piano App"
                   android:configChanges="keyboard|keyboardHidden|orientation"

@@ -1,5 +1,7 @@
 package com.games.pianoApp;
 
+import android.util.Log;
+
 import com.games.framework.Input.TouchEvent;
 import com.games.framework.Pixmap;
 import com.games.framework.Sound;
@@ -19,6 +21,7 @@ public class Key
     int srcY;
     int srcWidth;
     int srcHeight;
+    boolean playSound = false;
 	
 	public Key()
 	{
@@ -44,10 +47,104 @@ public class Key
 	
 	public boolean keyPressed(TouchEvent event)
 	{
-		if(event.x >= this.x && event.x <= this.x + this.width)
+		int eventY = event.y;
+		int eventX = event.x;
+		int blackHalfWidth = 22;
+		if(event.y >= 200)
 		{
-			return true;
+			if(eventX >= this.x && eventX <= this.x + this.width)
+			{
+				if(!"".equals(this.blackKeys))
+				{
+					if(eventY > (200 + 270))
+					{
+						if(!playSound && !this.keyDown)
+						{
+							this.playSound = true;
+						}
+						else
+						{
+							this.playSound = false;
+						}
+						this.keyDown = true;
+						Log.d("Key Pressed", "white key");
+						return true;
+					}
+				}
+				if("both".equals(this.blackKeys))
+				{
+					if(eventX < (this.x + this.width - blackHalfWidth) && eventX > (this.x + blackHalfWidth))
+					{
+						if(!playSound && !this.keyDown)
+						{
+							this.playSound = true;
+						}
+						else
+						{
+							this.playSound = false;
+						}
+						this.keyDown = true;
+						Log.d("Key Pressed both", "white key");
+						return true;
+					}
+				}
+				else if("right".equals(this.blackKeys))
+				{
+					if(eventX < (this.x + this.width - blackHalfWidth))
+					{
+						if(!playSound && !this.keyDown)
+						{
+							this.playSound = true;
+						}
+						else
+						{
+							this.playSound = false;
+						}
+						this.keyDown = true;
+						Log.d("Key Pressed right", "white key");
+						return true;
+					}
+				}
+				else if("left".equals(this.blackKeys))
+				{
+					if(eventX > (this.x + blackHalfWidth))
+					{
+						if(!playSound && !this.keyDown)
+						{
+							this.playSound = true;
+						}
+						else
+						{
+							this.playSound = false;
+						}
+						this.keyDown = true;
+						Log.d("Key Pressed left", "white key");
+						return true;
+					}
+				}
+				else
+				{
+					if(!playSound && !this.keyDown)
+					{
+						this.playSound = true;
+					}
+					else
+					{
+						this.playSound = false;
+					}
+					this.keyDown = true;						
+					return true;
+				}
+			}
 		}
+		this.keyDown = false;
+		this.playSound = false;
 		return false;
+	}
+	
+	public void resetKey()
+	{
+		this.keyDown = false;
+		this.playSound = false;
 	}
 }
